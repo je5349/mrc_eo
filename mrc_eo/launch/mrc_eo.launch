@@ -1,0 +1,36 @@
+<launch>
+  <!-- Console launch prefix -->
+  <arg name="launch_prefix" default=""/>
+  <arg name="cam_image" default="/kitti/camera_color_left/image_raw" />
+  <arg name="lidar_image" default="/kitti/camera_color_left/image_raw" />
+  <arg name="lidar_pc" default="/kitti/velo/pointcloud" />
+
+
+  <!-- Config and weights folder. -->
+  <arg name="cam_yolo_weights_path"          default="$(find mrc_eo)/yolo_network_config/weights"/>
+  <arg name="lidar_yolo_weights_path"          default="$(find mrc_eo)/yolo_network_config/weights"/>
+  <arg name="cam_yolo_config_path"           default="$(find mrc_eo)/yolo_network_config/cfg"/>
+  <arg name="lidar_yolo_config_path"           default="$(find mrc_eo)/yolo_network_config/cfg"/>
+
+  <!-- ROS and network parameter files -->
+  <arg name="ros_param_file"             default="$(find mrc_eo)/config/ros.yaml"/>
+  <arg name="network_param_file_cam"         default="$(find mrc_eo)/config/yolov3-tiny_cam.yaml"/>
+  <arg name="network_param_file_lidar"         default="$(find mrc_eo)/config/yolov3-tiny_lidar.yaml"/>
+
+  <!-- Load parameters -->
+  <rosparam command="load" ns="mrc_eo" file="$(arg ros_param_file)"/>
+  <rosparam command="load" ns="mrc_eo" file="$(arg network_param_file_cam)"/>
+  <rosparam command="load" ns="mrc_eo" file="$(arg network_param_file_lidar)"/>
+
+  <!-- Start darknet and ros wrapper -->
+  <node pkg="mrc_eo" type="mrc_eo" name="mrc_eo" output="screen" launch-prefix="$(arg launch_prefix)">
+    <param name="cam_config_path"           value="$(arg cam_yolo_config_path)" />
+    <param name="lidar_weights_path"          value="$(arg lidar_yolo_weights_path)" />
+    <param name="cam_weights_path"          value="$(arg cam_yolo_weights_path)" />
+    <param name="lidar_config_path"           value="$(arg lidar_yolo_config_path)" />
+    <param name="subscribers/camera_image/topic"           value="$(arg cam_image)" />
+    <param name="subscribers/lidar_image/topic"           value="$(arg lidar_image)" />
+    <param name="subscribers/lidar_pc/topic"           value="$(arg lidar_pc)" />
+  </node>
+
+</launch>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>mrc_eo</name>
+  <version>1.1.4</version>
+  <description>mrc-eo message with yolo</description>
+  <maintainer email="rotnn429@gmail.com">Jung Eun Lee</maintainer>
+  <license>BSD</license>
+  <url type="website">https://github.com/je5349/mrc_eo</url>
+  <author email="rotnn429@gmail.com">Marko Bjelonic</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>boost</depend>
+  <depend>libopencv-dev</depend>
+  <depend>libx11</depend>
+  <depend>libxt-dev</depend>
+  <depend>libxext</depend>
+
+  <depend>roscpp</depend>
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+  <depend>image_transport</depend>
+  <depend>cv_bridge</depend>
+  <depend>sensor_msgs</depend>
+  <depend>message_generation</depend>
+  <depend>mrc_eo_msgs</depend>
+  <depend>actionlib</depend>
+
+</package>

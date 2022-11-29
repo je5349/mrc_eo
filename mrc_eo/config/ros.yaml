@@ -1,0 +1,102 @@
+subscribers:
+
+  diagnostic:
+    topic: /mrc_eo/diagnostic
+    queue_size: 1
+
+  camera_image:
+    topic: /kitti/camera_color_left/image_raw
+    queue_size: 1
+
+  lidar_pc:
+    topic: /kitti/velo/pointcloud
+    queue_size: 1
+
+  lidar_image:
+    topic: /kitti/camera_color_left/image_raw
+    queue_size: 1
+
+  cam_object_detector:
+    topic: /mrc_eo/cam_found_object
+    queue_size: 1
+
+  cam_bounding_boxes:
+    topic: /mrc_eo/cam_bounding_boxes
+    queue_size: 1
+
+  lidar_object_detector:
+    topic: /mrc_eo/lidar_found_object
+    queue_size: 1
+
+  lidar_bounding_boxes:
+    topic: /mrc_eo/lidar_bounding_boxes
+    queue_size: 1
+
+actions:
+
+  camera_reading:
+    name: /mrc_eo/cam_check_for_objects
+
+  lidar_reading:
+    name: /mrc_eo/lidar_check_for_objects
+
+publishers:
+
+  diagnostic:
+    topic: /mrc_eo/diagnostic
+    queue_size: 1
+    latch: false
+
+  projection_with_image:
+    topic: /mrc_eo/projected_image
+    queue_size: 1
+    latch: false
+
+  projection_pc_image:
+    topic: /mrc_eo/projected_image_pc
+    queue_size: 1
+    latch: false
+
+  cam_object_detector:
+    topic: /mrc_eo/cam_found_object
+    queue_size: 1
+    latch: false
+
+  cam_bounding_boxes:
+    topic: /mrc_eo/cam_bounding_boxes
+    queue_size: 1
+    latch: false
+
+  cam_detection_image:
+    topic: /mrc_eo/cam_detection_image
+    queue_size: 1
+    latch: false
+
+  lidar_object_detector:
+    topic: /mrc_eo/lidar_found_object
+    queue_size: 1
+    latch: false
+
+  lidar_bounding_boxes:
+    topic: /mrc_eo/lidar_bounding_boxes
+    queue_size: 1
+    latch: false
+
+  lidar_detection_image:
+    topic: /mrc_eo/lidar_detection_image
+    queue_size: 1
+    latch: false
+
+  object_detection:
+    topic: /mrc_eo/Object_detection
+    queue_size: 1
+    latch: false
+
+image_view:
+
+  cam_enable_opencv: false
+  cam_wait_key_delay: 1
+  cam_enable_console_output: true
+  lidar_enable_opencv: false
+  lidar_wait_key_delay: 1
+  lidar_enable_console_output: true
