@@ -2,7 +2,7 @@
   <!-- Console launch prefix -->
   <arg name="launch_prefix" default=""/>
   <arg name="cam_image" default="/kitti/camera_color_left/image_raw" />
-  <arg name="lidar_image" default="/kitti/camera_color_left/image_raw" />
+  <arg name="lidar_image" default="/mrc_eo/projected_image_pc" />
   <arg name="lidar_pc" default="/kitti/velo/pointcloud" />
 
 
